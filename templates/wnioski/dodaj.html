@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pracownicy AppW16</title>
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <!-- <form method='post'>
+        {% csrf_token %}
+        {{ formularz.as_p }}
+       <button class='btn btn-default' type="submit">zapisz</button>
+       <a class='btn btn-danger' href="{% url 'wnioski.views.lista' %}">wróć</a>
+   </form> -->
+
+<form method="post">
+<div class="col-md-8 column">
+  <input type="hidden" name="csrfmiddlewaretoken" value="8sB7viABpUxV7eFbXD3BTRTQrRp1XRkH">
+
+  <p><label for="id_data_zlozenia_wniosku">Data zlozenia wniosku:</label>
+      <input class="form-control" id="id_data_zlozenia_wniosku" name="data_zlozenia_wniosku" data-format="dd.mm.yyyy" type="text"></p>
+
+  <p><label for="id_temat">Temat:</label> <input class="form-control" id="id_temat" maxlength="400" name="temat" type="text"></p>
+
+  <p><label for="id_KZZ">KZZ:</label> <select class="form-control" id="id_KZZ" name="KZZ">
+    <option value="" selected="selected">---------</option>
+    {% for y in KZZ %}
+    <option value="{{ y.id }}">{{ y.username }}</option>
+    {% endfor %}
+  </select></p>
+
+  <p><label for="id_department">dział:</label> <select class="form-control" id="id_department" name="department">
+    <option value="" selected="selected">---------</option>
+    {% for y in department %}
+    <option value="{{ y.id }}">{{ y.department }}</option>
+    {% endfor %}
+  </select></p>
+
+  <p><label for="id_department2">dział(2):</label> <select class="form-control" id="id_department2" name="department2">
+    <option value="" selected="selected">---------</option>
+    {% for y in department2 %}
+    <option value="{{ y.id }}">{{ y.department }}</option>
+    {% endfor %}
+  </select></p>
+
+  <p><label for="id_location">lokalizacja:</label> <select class="form-control" id="id_location" name="location">
+      <option value="" selected="selected">---------</option>
+      {% for y in location %}
+      <option value="{{ y.id }}">{{ y.location }}</option>
+      {% endfor %}
+  </select></p>
+
+  <p><label for="id_location2">lokalizacja(2):</label> <select class="form-control" id="id_location2" name="location2">
+      <option value="" selected="selected">---------</option>
+      {% for y in location2 %}
+      <option value="{{ y.id }}">{{ y.location }}</option>
+      {% endfor %}
+  </select></p>
+
+  <p><label for="id_VV_blitz">Blitz Idee?</label>
+      <input class="form-control" id="id_VV_blitz" name="VV_blitz" type="checkbox"></p>
+
+  <p><label for="id_oszczednosc">Oszczednosc:</label>
+      <input class="form-control" id="id_oszczednosc" name="oszczednosc" step="0.01" type="number"></p>
+
+  <p><label for="id_BHP">BHP:</label>
+      <input class="form-control" id="id_BHP" name="BHP" type="checkbox"></p>
+
+  <p><label for="id_wprowadzono">Wprowadzono:</label> <input class="form-control" id="id_wprowadzono" name="wprowadzono" type="number"></p>
+
+  <p><label for="id_uzasadnienie">Uzasadnienie:</label>
+      <textarea class="form-control" cols="40" id="id_uzasadnienie" name="uzasadnienie" rows="3"></textarea></p>
+
+  <p><label for="id_data_zmiany_statusu">Data zmiany statusu:</label>
+      <input class="form-control" id="id_data_zmiany_statusu" name="data_zmiany_statusu" type="text"></p>
+
+  <p><label for="id_odpowiedzialny">Odpowiedzialny:</label> <select class="form-control" id="id_odpowiedzialny" name="odpowiedzialny">
+    <option value="" selected="selected">---------</option>
+    {% for y in odpowiedzialny %}
+    <option value="{{ y.id }}">{{ y.odpowiedzialny }}</option>
+    {% endfor %}
+    </select></p>
+
+  <p><label for="id_zbieranie">Zbieranie:</label>
+      <input class="form-control" id="id_zbieranie" maxlength="250" name="zbieranie" type="text"></p>
+
+  <p><label for="id_controlling">Controlling:</label>
+      <input class="form-control" id="id_controlling" maxlength="250" name="controlling" type="text"></p>
+
+  <p><label for="id_punkty">Punkty:</label>
+      <input class="form-control" id="id_punkty" name="punkty" type="number"></p>
+
+  <p><label for="id_kwota">Kwota:</label>
+      <input class="form-control" id="id_kwota" name="kwota" step="0.01" type="number"></p>
+
+  <p><label for="id_data_wydania_punktow">Data wydania punktow:</label>
+      <input class="form-control" id="id_data_wydania_punktow" name="data_wydania_punktow" type="text"></p>
+
+  <p><label for="id_uwagi">Uwagi:</label>
+      <textarea class="form-control" cols="40" id="id_uwagi" name="uwagi" rows="3"></textarea></p>
+
+  <p><label for="id_narada_top_2">Narada top 2:</label>
+      <input class="form-control" id="id_narada_top_2" name="narada_top_2" type="text"></p>
+
+       <button class="btn btn-default" type="submit">zapisz</button>
+       <a class="btn btn-danger" href={% url 'wnioski.views.lista' %}>wróć</a>
+</div>
+</form>
+
+
+
+</body>
+</html>

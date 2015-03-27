@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title> 
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+                <a class='btn btn-primary' href="{% url 'pracownicy.views.lista' %}">pracownicy</a>
+                <a class='btn btn-primary' href="{% url 'baza.views.uslugi' %}">usługi</a>
+              	<h1>
+					Sprzęt
+				</h1>
+                <a class='btn btn-info' href="{% url 'koszty.views.nazwy_komputery' %}">nowy model sprzętu</a>
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+    	<div class="col-md-4 column">
+    <!-- {{ csrf_token }} -->
+
+		</div>
+		<div class="col-md-8 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>nazwa</th>
+						<th>numer seryjny</th>
+						<th>MAC</th>
+                        <th>hostname</th>
+                        <th>Viessmann standard</th>
+					</tr> 
+
+				</thead>
+				<tbody>
+          {% for komputer in komputery %}
+           <tr>
+						<td>{{ komputer.nazwa }}</td>
+						<td>{{ komputer.SN }}</td>
+						<td>{{ komputer.MAC }}</td>
+                        <td>{{ komputer.hostname }}</td>
+                        <td>{{ komputer.standard }}</td>
+                        <td><a class='btn btn-primary' href="{% url 'koszty.views.usun_komputer' id=komputer.pk %}">usuń</a></td>
+                        <td><a class='btn btn-danger' href="{% url 'koszty.views.edytuj_komputer' id=komputer.pk %}">edytuj</a></td>
+					</tr>
+          {% endfor %}
+				</tbody>
+			</table> 
+     
+
+       <form method='post'>
+        {% csrf_token %}
+        {{ formularz.as_p }}
+       <button type="submit">zapisz</button>
+       </form>
+       
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title> 
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="col-md-8 column">
+<div class="page-header">
+    <h1>Lista sprzętu <small>edytuj wpis</small></h1>
+<table class="table">
+<form method="post">
+    <input type="hidden" name="csrfmiddlewaretoken" value="8sB7viABpUxV7eFbXD3BTRTQrRp1XRkH">
+    <p><label for="id_KZZ">KZZ:</label> <select class="form-control" id="id_KZZ" name="KZZ">
+        <option value="{{ pracownik.KZZ_id }}" selected="selected">{{ pracownik.KZZ }}</option>
+            <option value="">---------</option>
+            {% for y in KZZ %}
+        <option value="{{ y.id }}">{{ y.username }}</option>
+            {% endfor %}
+        </select></p>
+
+    <p><label for="id_imie">imię:</label> <input class="form-control" id="id_imie" maxlength="150" name="imie" type="text" value="{{ pracownik.imie }}"></p>
+
+    <p><label for="id_nazwisko">nazwisko:</label> <input class="form-control" id="id_nazwisko" maxlength="150" name="nazwisko" type="text" value="{{ pracownik.nazwisko }}"></p>
+
+    <p><label for="id_department">dział:</label> <select class="form-control" id="id_department" name="department">
+        <option value="{{ pracownik.department_id }}" selected="selected">{{ pracownik.department }}</option>
+            <option value="">---------</option>
+            {% for y in department %}
+        <option value="{{ y.id }}">{{ y.department }}</option>
+            {% endfor %}
+        </select></p>
+
+    <p><label for="id_location">lokalizacja:</label> <select class="form-control" id="id_location" name="location">
+        <option value="{{ pracownik.location_id }}" selected="selected">{{ pracownik.location }}</option>
+            <option value="">---------</option>
+            {% for y in location %}
+        <option value="{{ y.id }}">{{ y.location }}</option>
+            {% endfor %}
+        </select></p>
+
+    <p><label for="id_werk">werk:</label> <select class="form-control" id="id_werk" name="werk">
+        <option value="{{ pracownik.werk_id }}" selected="selected">{{ pracownik.werk }}</option>
+            <option value="">---------</option>
+            {% for y in werk %}
+        <option value="{{ y.id }}">{{ y.werk }}</option>
+            {% endfor %}
+        </select></p>
+
+    <p><label for="id_MPK">MPK:</label> <input class="form-control" id="id_MPK" maxlength="20" name="MPK" type="text" value="{{ pracownik.MPK }}"></p>
+
+    <button class="btn btn-primary" type="submit">zapisz</button>
+
+    <a href="{% url 'pracownicy.views.lista' %}" type="button" class="btn btn-default">anuluj</a>
+    <a href="{% url 'pracownicy.views.usun' id=pracownik.pk %}" type="button" class="btn btn-danger">usuń</a>
+
+
+</form>
+
+</table>
+</div>
+</div></div>
+</body>
+</html>

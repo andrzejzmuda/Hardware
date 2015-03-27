@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <title>Raport</title>
+<div class="col-md-8 column">
+  <div class="page-header">
+    <a class='btn btn-danger' href="{% url 'koszty.views.dashboard' %}">wróć do raportów</a>
+  {% for n in pracownik %}
+    <a class='btn btn-primary' href="{% url 'koszty.views.koszty_pracownik' id=n.department_id %}">wybierz innego pracownika</a>
+  {% endfor %}
+      {% for pracownik in pracownik %}
+      <h4>raport kosztów IT wybranego pracownika</h4>
+          <a class='btn btn-info' href="{% url 'koszty.views.koszty_dzial' id=pracownik.department_id %}">raport kosztów dla całego działu</a>
+      <h3>{{ pracownik }}</h3>
+      {% endfor %}
+  </div>
+</div>
+
+<style>
+    .table { -webkit-column-count: 2;
+            -webkit-column-gap: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="col-md-8 column">
+    <h4>usługi uzytkownika:</h4>
+<div class="table">
+
+    {% for uslugi in uslugi %}
+        <li>{{ uslugi }}</li>
+    {% endfor %}
+
+    {% for cena in cena %}
+        <li>{{ cena|floatformat:2 }}</li>
+    {% endfor %}
+
+</div>
+    <h4>miesięczny koszt usług:</h4>
+    {% for suma in pracownik_koszt %}
+       <h4>{{ suma|default_if_none:0|floatformat:2 }} EUR</h4>
+    {% endfor %}
+</div>
+
+
+</body>
+</html>

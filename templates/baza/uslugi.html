@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="row clearfix">
+                <!-- {{ csrf_token }} -->
+                <div class="col-md-8 column">
+                 <div class="page-header">
+                        <h1>
+                            Lista usług <small>do usług!</small>
+                        </h1>
+                     <a class='btn btn-danger' href="{% url 'koszty.views.dashboard' %}">raporty</a>
+                 </div>
+                    <a class='btn btn-primary' href="{% url 'baza.views.lista' %}">Sprzęt</a>
+                    <a class='btn btn-primary' href="{% url 'pracownicy.views.lista' %}">Pracownicy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-8 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>KZZ</th>
+						<th>usługa</th>
+                    </tr>
+         		</thead>
+				<tbody>
+          {% for usluga in Lista_uslug %}
+
+                    <tr>
+                        <td>{{ usluga.KZZ }}</td>
+                        <td>{{ usluga.usluga}}</td>
+                        <td><a class="btn btn-info" href="{% url 'baza.views.edytuj_usluge' id=usluga.pk %}">edytuj</a></td>
+                    </tr>
+          {% endfor %}
+				</tbody>
+			</table>
+        <form method='post'>
+            {% csrf_token %}
+            {{ formularz.as_p }}
+           <button class='btn btn-info' type="submit">zapisz</button>
+        </form>
+        </div>
+
+        </div>
+    </div>
+	</div>
+</div>
+</body>
+</html>

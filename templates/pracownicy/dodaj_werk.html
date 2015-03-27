@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <table class="table">
+				<thead>
+					<tr>
+                        <th>l.p.</th>
+                        <th>Werk</th>
+
+                    </tr>
+                </thead>
+				<tbody>
+                {% for y in werk %}
+                <tr>
+                    <td>{{ y.id }}</td>
+                    <td>{{ y.werk }}</td>
+                    <td><a class='btn btn-danger' href="{% url 'pracownicy.views.usun_werk' id=y.id %}">usuń</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+    </table>
+
+       <form method='post'>
+        {% csrf_token %}
+        {{ formularz.as_p }}
+       <button class='btn btn-default' type="submit">zapisz</button>
+       <a class='btn btn-danger' href="{% url 'pracownicy.views.lista' %}">wróć</a>
+   </form>
+</body>
+</html>

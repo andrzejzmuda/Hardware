@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hardware AppW16</title>
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+
+		<div class="col-md-8 column">
+			<div class="page-header">
+				<h1>
+					Wnioski <small>jakiś mały napis</small>
+				</h1>
+			</div>
+            <a class='btn btn-default' href="{% url 'baza.views.lista' %}">sprzęt</a>
+            <a class='btn btn-default' href="{% url 'pracownicy.views.lista' %}">pracownicy</a>
+            <a class='btn btn-primary' href="{% url 'wnioski.views.dodaj' %}">dodaj</a>
+
+		</div>
+
+
+
+
+<!-- {{ csrf_token }} -->
+<div class="col-md-8 column">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>numer wniosku</th>
+                <th>data złożenia wniosku</th>
+                <th>temat</th>
+                <th>KZZ</th>
+                <th>dział(1)</th>
+                <th>dział(2)</th>
+                <th>obszar(1)</th>
+                <th>obszar(2)</th>
+                <th>Blitz idee(?)</th>
+                <th>oszczędność</th>
+                <th>BHP</th>
+                <th>wprowadzono</th>
+                <th>uzasadnienie</th>
+                <th>data zmiany statusu</th>
+                <th>odpowiedzialny</th>
+                <th>zbieranie</th>
+                <th>controlling</th>
+                <th>punkty</th>
+                <th>kwota</th>
+                <th>data wydania punktów</th>
+                <th>uwagi</th>
+                <th>narada "top 2"</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for wniosek in Lista_Wnioskow %}
+
+            <tr>
+                <td>{{ wniosek.pk }}</td>
+                <td>{{ wniosek.data_zlozenia_wniosku }}</td>
+                <td><a href="{% url 'wnioski.views.edytuj' id=wniosek.pk %}">{{ wniosek.temat }}</a></td>
+                <td>{{ wniosek.KZZ }}</td>
+                <td>{{ wniosek.department }}</td>
+                <td>{{ wniosek.department2 }}</td>
+                <td>{{ wniosek.location }}</td>
+                <td>{{ wniosek.location2 }}</td>
+                <td>{{ wniosek.VV_blitz }}</td>
+                <td>{{ wniosek.oszczednosc }}</td>
+                <td>{{ wniosek.BHP }}</td>
+                <td>{{ wniosek.wprowadzono }}</td>
+                <td>{{ wniosek.uzasadnienie }}</td>
+                <td>{{ wniosek.data_zmiany_statusu }}</td>
+                <td>{{ wniosek.odpowiedzialny }}</td>
+                <td>{{ wniosek.zbieranie }}</td>
+                <td>{{ wniosek.controlling }}</td>
+                <td>{{ wniosek.punkty }}</td>
+                <td>{{ wniosek.kwota }}</td>
+                <td>{{ wniosek.data_wydania_punktow }}</td>
+                <td>{{ wniosek.uwagi }}</td>
+                <td>{{ wniosek.narada_top_2 }}</td>
+                <td><a href="{% url 'wnioski.views.usun' id=wniosek.pk %}">usuń</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

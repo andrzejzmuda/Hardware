@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Pracownicy AppW16</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	   <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    Lista pracowników <small>Subtext for header</small>
+                </h1>
+                <a class='btn btn-danger' href="{% url 'koszty.views.dashboard' %}">dashboard</a>
+                <a class='btn btn-primary' href={% url 'baza.views.lista' %}>sprzęt</a>
+                <a class='btn btn-primary' href={% url 'baza.views.uslugi' %}>usługi</a>
+
+            </div>
+            <a class='btn btn-primary' href={% url 'pracownicy.views.dodaj' %}>dodaj nowego pracownika</a>
+            <a class='btn btn-primary' href={% url 'pracownicy.views.dodaj_werk' %}>dodaj Werk</a>
+            <a class='btn btn-primary' href={% url 'pracownicy.views.dodaj_dzial' %}>dodaj dział</a>
+            <a class='btn btn-primary' href={% url 'pracownicy.views.dodaj_lokalizacje' %}>dodaj lokalizację</a>
+
+		</div>
+	</div>
+	<div class="row clearfix">
+  	<div class="col-md-4 column">
+    <!-- {{ csrf_token }} -->
+    </div>
+		<div class="col-md-8 column">
+			<table class="table">
+				<thead>
+					<tr>
+                        <th>KZZ</th>
+						<th>imię</th>
+						<th>nazwisko</th>
+						<th>dział</th>
+                        <th>lokacja</th>
+                        <th>werk</th>
+                        <th>MPK</th>
+                        <th>edytuj dane</th>
+                        <th>sprzęt użytkownika</th>
+
+					</tr>
+         		</thead>
+				<tbody>
+          {% for pracownik in Pracownicy %}
+           <tr>
+						<td><a href="{% url 'pracownicy.views.edytuj' id=pracownik.pk %}">{{ pracownik.KZZ }}</a></td>
+						<td>{{ pracownik.imie }}</td>
+						<td>{{ pracownik.nazwisko }}</td>
+						<td><a href="{% url 'koszty.views.koszty_dzial' id=pracownik.department_id %}">{{ pracownik.department }}</a></td>
+                        <td>{{ pracownik.location }}</td>
+                        <td>{{ pracownik.werk }}</td>
+                        <td>{{ pracownik.MPK }}</td>
+                        <td><a class='btn btn-primary' href="{% url 'pracownicy.views.edytuj' id=pracownik.pk %}">edytuj</a></td>
+                        <td><a class='btn btn-info' href="{% url 'pracownicy.views.sprzet_uzytkownika' id=pracownik.KZZ_id %}">pokaż</a></td>
+					</tr>
+          {% endfor %}
+				</tbody>
+</table>
+</div></div></div>
+</body>
+</html>

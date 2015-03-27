@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<a class='btn btn-primary' href="{% url 'baza.views.edytuj_usluge' id=usluga.pk %}">edytuj listę usług</a>
+    <div class="row clearfix">
+        <!-- {{ csrf_token }} -->
+        <div class="col-md-8 column">
+                <h3>Miesięczny koszt usług dostarczanych dla {{ usluga.KZZ }}</h3>
+
+                    <dl>
+                        <dd>{{ usluga.usluga1 }}</dd>
+                        <dd>{{ usluga.usluga2 }}</dd>
+                        <dd>{{ usluga.usluga3 }}</dd>
+                        <dd>{{ usluga.usluga4 }}</dd>
+                        <dd>{{ usluga.usluga5 }}</dd>
+                        <dd>{{ usluga.usluga6 }}</dd>
+                        <dd>{{ usluga.usluga7 }}</dd>
+                        <dd>koszt miesięczny: {{ suma }}</dd>
+                        <dd>koszt roczny: {{ suma_roczna }}</dd>
+                    </dl>
+
+        </div>
+	</div>
+</body>
+</html>

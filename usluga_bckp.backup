@@ -1,0 +1,155 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.3.4
+-- Dumped by pg_dump version 9.3.4
+-- Started on 2015-03-02 10:19:24 CET
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 242 (class 1259 OID 91287)
+-- Name: koszty_usluga; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE koszty_usluga (
+    id integer NOT NULL,
+    artikel numeric(10,0) NOT NULL,
+    bezeichnung character varying(250) NOT NULL,
+    preis double precision NOT NULL
+);
+
+
+ALTER TABLE public.koszty_usluga OWNER TO postgres;
+
+--
+-- TOC entry 241 (class 1259 OID 91285)
+-- Name: koszty_usluga_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE koszty_usluga_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.koszty_usluga_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 2388 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: koszty_usluga_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE koszty_usluga_id_seq OWNED BY koszty_usluga.id;
+
+
+--
+-- TOC entry 2272 (class 2604 OID 91290)
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY koszty_usluga ALTER COLUMN id SET DEFAULT nextval('koszty_usluga_id_seq'::regclass);
+
+
+--
+-- TOC entry 2383 (class 0 OID 91287)
+-- Dependencies: 242
+-- Data for Name: koszty_usluga; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (0, 0, 'brak', 0);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (1, 45100, 'IT-Benutzer(inkl. Notes, Mail, Internet usw.)', 28.5);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (2, 45101, 'IT-Benutzer ohne Notes', 11.9000000000000004);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (3, 45102, 'Webbasierte Besprechungen', 5.29999999999999982);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (4, 45110, 'Standardarbeitsplatz', 14.8000000000000007);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (5, 45111, 'Premiumarbeitsplatz', 29);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (6, 45112, 'CAD Arbeitsplatz (inkl. Leasing)', 84);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (8, 45114, 'Mobiler Arbeitsplatz', 34);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (7, 45113, 'CAD Arbeitsplatz (ohne Leasing)', 28.5);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (9, 45115, 'Adminrechte', 30);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (10, 45117, 'Mobiler Arbeitsplatz inkl. Leasing', 74.0999999999999943);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (11, 45118, 'iPad inkl. Leasing', 30.3000000000000007);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (12, 45119, 'Desktop Arbeitsplatz inkl. Leasing', 56.3999999999999986);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (13, 45121, 'Mobile Endgeraete', 12);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (16, 45131, 'Telefon cordless', 22);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (18, 45134, 'Softphone', 15);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (19, 45135, 'Vermittlungsarbietsplatz', 260);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (28, 45182, 'AutorenWerkz. Hosting Internetauftritts', 262);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (30, 45201, 'Servicemanagement', 60);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (31, 45225, 'Mobisys-Funkscanner', 7.34999999999999964);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (33, 45241, 'CAD 3D', 240);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (35, 45243, 'CAD Viewer', 150);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (36, 45245, 'CAD NC', 390);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (37, 45246, 'CAD FCAD', 684);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (38, 45247, 'TeamCenter', 250);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (40, 45250, 'IT-Anwendungen <100EUR', 5);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (41, 45251, 'IT-Anwendungen <500EUR', 24);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (42, 45252, 'IT-Anwendungen <1.000EUR', 40);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (43, 45253, 'IT-Anwendungen <2.500EUR', 100);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (44, 45254, 'VDE Webservice', 240);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (45, 45260, 'Standardanschluss Netz', 6);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (46, 45262, 'MPLS Leitung', 1);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (47, 45263, 'Secure Port', 44);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (48, 45264, 'Videokonferenz Raumsystem', 98);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (49, 45265, 'Videokonferenz Desktopsystem', 25);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (51, 45281, 'Speicher Lw. H:', 0.349999999999999978);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (53, 45284, 'Speicher DMS', 0.550000000000000044);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (14, 45124, 'Traveler', 9.19999999999999929);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (15, 45130, 'Telefon Standardgeraete', 12.5999999999999996);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (17, 45132, 'ACD Anschluss', 33.7999999999999972);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (20, 45140, 'Terminalserver', 15.5999999999999996);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (21, 45141, 'Terminalserver VDI Desktop', 11.1999999999999993);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (22, 45150, 'Portal', 33.8999999999999986);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (23, 45160, 'SAP', 91.4000000000000057);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (24, 45170, 'BO Berichte', 27.1999999999999993);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (25, 45171, 'BO Berichtsersteller', 68.2000000000000028);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (26, 45172, 'TM1 Berichte', 17.6000000000000014);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (27, 45173, 'Cubeware TM1 Berichtersteller', 124.599999999999994);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (29, 45184, 'Autorenrechte im Intranet', 26.1999999999999993);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (32, 45240, 'CAD 2D', 320.699999999999989);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (34, 45242, 'EPLAN', 297.199999999999989);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (39, 45248, 'MATLAB', 335.600000000000023);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (50, 45270, 'IT-Leistung Dokumentencenter', 11.3000000000000007);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (52, 45283, 'Speicher Mailbox', 0.699999999999999956);
+INSERT INTO koszty_usluga (id, artikel, bezeichnung, preis) VALUES (54, 45330, 'Creative Suite', 70.0999999999999943);
+
+
+--
+-- TOC entry 2389 (class 0 OID 0)
+-- Dependencies: 241
+-- Name: koszty_usluga_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('koszty_usluga_id_seq', 1, false);
+
+
+--
+-- TOC entry 2274 (class 2606 OID 91292)
+-- Name: koszty_usluga_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY koszty_usluga
+    ADD CONSTRAINT koszty_usluga_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2015-03-02 10:19:24 CET
+
+--
+-- PostgreSQL database dump complete
+--
+

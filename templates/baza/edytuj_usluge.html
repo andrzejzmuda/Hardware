@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<form method='post'>
+        {% csrf_token %}
+       {{ form.as_p }}
+
+       <button class='btn btn-info' type="submit">zapisz</button>
+       <a href="{% url 'baza.views.usun_usluge' id=usluga.pk %}" type="button" class="btn btn-danger">usuń</a>
+       <a class='btn btn-default' href="{% url 'baza.views.uslugi' %}">wróć</a>
+
+
+</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hardware AppW16</title>
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.dataTables.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" type="text/css" href="/static/css/jquery.dataTables.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="/static/js/jquery.dataTables.js"></script>
+<script src="/static/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" class="init">
+
+
+$(document).ready(function() {
+	$('#lista').dataTable();
+} );
+
+</script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+					Użytkownicy i sprzęt <small>jakiś mały napis</small>
+				</h1>
+                <a class='btn btn-danger' href="{% url 'koszty.views.dashboard' %}">dashboard</a>
+                <a class='btn btn-small' href="{% url 'baza.views.CSVexport' %}">CSV</a>
+            </div>
+            <a class='btn btn-primary' href="{% url 'pracownicy.views.lista' %}">pracownicy</a>
+            <a class='btn btn-primary' href="{% url 'baza.views.uslugi' %}">usługi</a>
+            <a class='btn btn-primary' href="{% url 'koszty.views.lista_komputery' %}">edytuj listę sprzętu</a>
+
+</div>
+
+        </div>
+	</div>
+
+	<div class="row clearfix">
+        <!-- {{ csrf_token }} -->
+        <div class="col-md-8 column">
+
+			<table id="lista" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>KZZ</th>
+						<th>sprzet</th>
+
+
+					</tr>
+         		</thead>
+				<tbody>
+          {% for sprzet in Lista_sprzetu %}
+                    <tr>
+                        <td>{{ sprzet.KZZ }}</td>
+                        <td>{{ sprzet.sprzet }}</td>
+						<td><a class='btn btn-primary' href="{% url 'baza.views.edytuj' id=sprzet.pk %}">edytuj</a></td>
+                        <td><a class='btn btn-danger' href="{% url 'baza.views.usun' id=sprzet.pk %}">usuń</a></td>
+				    </tr>
+          {% endfor %}
+				</tbody>
+			</table>
+
+    <form method='post'>
+            {% csrf_token %}
+            {{ formularz.as_p }}
+           <button class='btn btn-info' type="submit">zapisz</button>
+    </form>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>

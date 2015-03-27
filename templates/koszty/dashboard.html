@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Dodaj se coś</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<style>
+    .table {-webkit-column-count: 2;}
+</style>
+</head>
+<body>
+
+<div class="col-md-8 column">
+  <div class="page-header">
+    <a class='btn btn-default' href="{% url 'baza.views.lista' %}">strona główna</a>
+  </div>
+</div>
+
+<table class="table">
+<div class="col-md-8 column">
+    <th>raport kosztów wybranego działu
+    {% for y in lista %}
+    <li><a href="{% url 'koszty.views.koszty_dzial' id=y.id %}">{{ y.department }}{% endfor %}</a></li></th>
+</div>
+<div class="col-md-8 column">
+<th>raport kosztów wybranego pracownika
+{% for y in lista %}
+    <li><a href="{% url 'koszty.views.koszty_pracownik' id=y.id %}">{{ y.department }}{% endfor %}</a></li></th>
+</div>
+</table>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title> 
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="col-md-8 column">
+  <div class="page-header">
+    <a class='btn btn-primary' href="{% url 'pracownicy.views.lista' %}">wróć</a>
+  </div>
+    <div class="col-md-8 column">
+            <table class="table">
+                <tbody>
+                <h1><small>Lista sprzętu przypisanego do {% for uzytkownik in uzytkownik %}{{ uzytkownik }}{% endfor %}</small></h1>
+                {% for n in sprzet_uzytkownika %}
+                        <tr>
+                            <td>{{ n.sprzet }}</td>
+                        </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<table class="table">
+				<thead>
+					<tr>
+						<th>nazwa</th>
+						<th>cena</th>
+					</tr>
+
+				</thead>
+				<tbody>
+          {% for nazwa in nazwy %}
+           <tr>
+						<td>{{ nazwa.nazwa }}</td>
+						<td>{{ nazwa.koszt }}</td>
+						<td><a class='btn btn-primary' href="{% url 'koszty.views.usun_nazwe' id=nazwa.pk %}">usuń</a></td>
+					</tr>
+          {% endfor %}
+				</tbody>
+			</table>
+
+    <form method='post'>
+            {% csrf_token %}
+            {{ formularz.as_p }}
+           <button class='btn btn-info' type="submit">zapisz</button>
+
+           <a class='btn btn-default' href="{% url 'koszty.views.lista_komputery' %}">wróć</a>
+    </form>
+</body>
+</html>
