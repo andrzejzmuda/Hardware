@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Hardware.views.home', name='home'),
@@ -17,6 +18,7 @@ urlpatterns = patterns('',
     url(r'^dodaj_usluge/$', 'baza.views.dodaj_usluge'),
     url(r'^usun_usluge/(?P<id>\d+)$', 'baza.views.usun_usluge'),
     url(r'^edytuj_usluge/(?P<id>\d+)$', 'baza.views.edytuj_usluge'),
-    url(r'^CSVexport/$', 'baza.views.CSVexport'),
+    url(r'^CSVexport/$', 'baza.views.CSVexport')
+
 
 )
